@@ -1,0 +1,22 @@
+---
+- name: Install the Remi Release Repo
+  yum: name=http://rpms.famillecollet.com/enterprise/remi-release-7.rpm state=present
+
+- name: Install PHP and its Modules
+  yum: enablerepo="remi,remi-php56" pkg={{ item }} state=latest
+  with_items:
+  - php
+  - php-common
+  - php-mysql
+  - php-fpm
+  - php-gd
+  - php-mcrypt
+
+- name: Update the php.ini with the newer configuration
+  copy: src=files/php.ini dest=/etc/php.ini mode=0644
+
+- name: Update the www.conf with the newer configuration
+  copy: src=files/www.conf dest=/etc/php-fpm.d/www.conf mode=0644
+
+- name: Start PHP-FPM
+  service: name=php-fpm state=started enabled=yes

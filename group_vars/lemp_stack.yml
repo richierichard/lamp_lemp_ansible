@@ -1,0 +1,2 @@
+# Place the MySQL password here if it needs to be accessed in lemp_stack role alone
+#mysql_root_password: test@1234

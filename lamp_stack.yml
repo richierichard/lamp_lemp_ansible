@@ -1,0 +1,10 @@
+---
+- hosts: lamp_stack
+  become: yes
+  roles:
+    - machine_bootstrap
+    - mysql
+    - php
+    - apache
+  #vars:
+    #mysql_root_password: test@1234

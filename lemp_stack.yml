@@ -1,0 +1,10 @@
+---
+- hosts: lemp_stack
+  become: yes
+  roles:
+    - machine_bootstrap
+    - mysql
+    - php
+    - nginx
+  #vars:
+    #mysql_root_password: test@1234

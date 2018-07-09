@@ -1,0 +1,6 @@
+---
+- name: Install Nginx Web Server
+  yum: name=nginx state=present
+
+- name: Start Nginx Web Server
+  service: name=nginx state=started enabled=yes

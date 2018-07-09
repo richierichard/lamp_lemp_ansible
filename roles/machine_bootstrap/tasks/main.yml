@@ -1,0 +1,14 @@
+---
+- name: Install EPEL Release Repo
+  yum: name=epel-release state=latest
+
+- name: Yum Update
+  yum: name=* state=latest
+
+- name: Install Miscellaneous Packages
+  yum: pkg={{ item }} state=latest
+  with_items:
+  - vim
+  - wget
+  - zip
+  - unzip
